@@ -1,0 +1,12 @@
+{
+  "name": "splitsmart-benchmark",
+  "version": "1.0.0",
+  "description": "Gamified expense splitter",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SplitSmart - Professional Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
+    </video>
+
+    <header>
+        <h1>SplitSmart</h1>
+        <p class="subtitle">Simplified Expense Management & Diagnostics</p>
+        <button class="btn-primary" onclick="resetAll()" style="margin-top: 1rem; padding: 0.5rem 1.5rem;">Reset System
+            Data</button>
+    </header>
+
+    <div class="container">
+        <!-- Friends Setup Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Participants <span class="badge" id="friend-count">0</span></h2>
+            </div>
+
+            <form id="add-friend-form" class="input-group">
+                <input type="text" id="friend-name" placeholder="Enter name" required autocomplete="off">
+                <button type="submit" class="btn-secondary">Add</button>
+            </form>
+
+            <div class="list-container" id="friend-list">
+                <!-- Friend cards injected here -->
+            </div>
+        </div>
+
+        <!-- Expense Entry Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Record Expense</h2>
+            </div>
+
+            <form id="add-expense-form">
+                <input type="text" id="expense-desc" placeholder="Description (e.g. Dinner)" required autocomplete="off"
+                    style="margin-bottom: 1.5rem;">
+
+                <div style="margin-bottom: 1.5rem;">
+                    <span
+                        style="font-size: 0.85rem; font-weight: 500; font-family: var(--font-family); color: var(--text-main);">Paid
+                        By (Enter amounts):</span>
+                    <div id="expense-payers-list"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 0.5rem;">
+                        <span class="subtitle" style="font-size: 0.8rem;">Add participants first</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <span
+                        style="font-size: 0.85rem; font-weight: 500; font-family: var(--font-family); color: var(--text-main);">Shared
+                        with (Split equally):</span>
+                    <div id="expense-members" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                        <span class="subtitle" style="font-size: 0.8rem;">Add participants to select</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Record Expense Flow</button>
+            </form>
+
+            <div class="list-container" id="expense-list" style="margin-top: 1rem;">
+                <!-- Expenses listed here -->
+            </div>
+        </div>
+
+        <!-- Settlements Panel -->
+        <div class="panel" style="grid-column: 1 / -1;">
+            <div class="panel-header">
+                <h2>Optimized Settlements <span class="badge" id="settlement-count">0</span></h2>
+                <button class="btn-secondary" onclick="calculateSettlements()">Re-calculate</button>
+            </div>
+
+            <div class="list-container" id="settlement-list" style="max-height: none;">
+                <p style="text-align: center; color: var(--text-muted); padding: 1.5rem; width: 100%;">No pending
+                    settlements.</p>
+            </div>
+        </div>
+
+        <!-- Benchmark Dashboard -->
+        <div class="panel benchmark-panel">
+            <div class="panel-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0.5rem;">
+                <h2>System Diagnostics</h2>
+            </div>
+            <p class="subtitle" style="margin-bottom: 1rem;">Run local performance testing on the calculation algorithm.
+            </p>
+
+            <div class="controls">
+                <button class="btn-secondary" onclick="runBenchmark(100, 500)">Test Target: 100 Users, 500
+                    Transactions</button>
+                <button class="btn-secondary" onclick="runBenchmark(1000, 5000)">Stress Test: 1K Users, 5K
+                    Transactions</button>
+            </div>
+
+            <div class="progress-bg">
+                <div class="progress-fill" id="benchmark-progress"></div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-time">0.0ms</div>
+                    <div class="stat-label">Calculation Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-render">0.0ms</div>
+                    <div class="stat-label">Render Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-transactions">0</div>
+                    <div class="stat-label">Resolved Debts</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
