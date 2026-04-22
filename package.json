@@ -4,8 +4,7 @@
   "description": "Gamified expense splitter",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
+    "dev": "node server.js"
   },
   "author": "",
   "license": "ISC"
