@@ -5,9 +5,10 @@ const path = require('path');
 const PORT = 8000;
 
 const server = http.createServer((req, res) => {
-    let filePath = '.' + req.url;
-    if (filePath === './') {
-        filePath = './index.html';
+    // Serve files from the frontend directory
+    let filePath = './frontend' + req.url;
+    if (filePath === './frontend/') {
+        filePath = './frontend/index.html';
     }
 
     const extname = String(path.extname(filePath)).toLowerCase();
