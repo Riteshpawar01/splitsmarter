@@ -58,7 +58,7 @@
                         <div class="avatar">${initial}</div>
                         <div class="card-details">
                             <h3>${f.name}</h3>
-                            <p class="${bClass}">${bText} ${bAmt > 0 ? '$'+bAmt.toFixed(2) : ''}</p>
+                            <p class="${bClass}">${bText} ${bAmt > 0 ? '₹'+bAmt.toFixed(2) : ''}</p>
                         </div>
                     </div>
                 `;
@@ -92,7 +92,7 @@
                 payerGroup.style.gap = '0.5rem';
                 payerGroup.innerHTML = `
                     <span style="font-size: 0.85rem; width: 60px; overflow: hidden; text-overflow: ellipsis;">${f.name}</span>
-                    <input type="number" class="payer-amount-input" data-id="${f.id}" placeholder="$0" min="0" step="0.01" style="flex: 1; padding: 0.4rem;">
+                    <input type="number" class="payer-amount-input" data-id="${f.id}" placeholder="₹0" min="0" step="0.01" style="flex: 1; padding: 0.4rem;">
                 `;
                 payersList.appendChild(payerGroup);
             });
@@ -163,7 +163,7 @@
                         <h3 style="color: var(--text-main)">${e.description}</h3>
                         <p>Paid by ${payerText}</p>
                     </div>
-                    <div style="font-weight: 500;">$${e.amount.toFixed(2)}</div>
+                    <div style="font-weight: 500;">₹${e.amount.toFixed(2)}</div>
                 `;
                 expenseList.appendChild(el);
             });
@@ -251,7 +251,7 @@
                     <div class="settlement-text">
                         <strong>${fromName}</strong> pays <strong>${toName}</strong>
                     </div>
-                    <div class="settlement-amount">$${tx.amount.toFixed(2)}</div>
+                    <div class="settlement-amount">₹${tx.amount.toFixed(2)}</div>
                 `;
                 settlementList.appendChild(el);
             });
@@ -314,3 +314,23 @@
         addFriend("Bob");
         addFriend("Charlie");
         renderFriends(); updateExpenseForms(); calculateSettlements();
+
+        // Initialize 3D Background
+        if (typeof VANTA !== 'undefined') {
+            VANTA.NET({
+                el: "#bg-3d",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x2563eb,
+                backgroundColor: 0xf0f5fa,
+                points: 14.00,
+                maxDistance: 22.00,
+                spacing: 18.00,
+                showDots: true
+            });
+        }
