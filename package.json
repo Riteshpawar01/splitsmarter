@@ -2,9 +2,9 @@
   "name": "splitsmart-benchmark",
   "version": "1.0.0",
   "description": "Gamified expense splitter",
-  "main": "server.js",
   "scripts": {
-    "dev": "node backend/server.js"
+    "dev": "node backend/server.js",
+    "build": "echo 'No build needed for static files'"
   },
   "author": "",
   "license": "ISC"
